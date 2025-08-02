@@ -4,6 +4,7 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { TasksModule } from './tasks/tasks.module';
 import { Organization } from './organizations/organization.entity';
+import { OrganizationModule } from './organizations/organization.module';
 import { Task } from './tasks/task.entity';
 import { User } from './users/user.entity';
 
@@ -15,6 +16,7 @@ import { User } from './users/user.entity';
       entities: [User, Task, Organization],
       synchronize: true,
     }),
+    OrganizationModule,
     AuthModule,
     UsersModule,
     TasksModule,
