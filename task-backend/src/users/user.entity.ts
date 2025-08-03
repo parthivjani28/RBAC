@@ -1,4 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import { Organization } from '../organizations/organization.entity';
+import { Role } from '../roles/role.entity';
 
 @Entity()
 export class User {
@@ -11,9 +13,9 @@ export class User {
   @Column()
   password: string;
 
-  @Column({ default: 'viewer' }) // roles: owner, admin, viewer
-  role: string;
+  @ManyToOne(() => Role, { eager: true })
+  role: Role;
 
-  @Column({ nullable: true })
-  organizationId: number; // optional for now
+  @ManyToOne(() => Organization, { eager: true })
+  organization: Organization;
 }

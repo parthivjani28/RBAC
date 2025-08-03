@@ -16,7 +16,7 @@ export class TasksService {
     const task = this.tasksRepo.create({
       ...data,
       owner: user,
-      organization: { id: user.organizationId },
+      organization: { id: user.organization.id }, // FIXED
     });
     await this.auditLogService.log('create_task', user.id, `Task: ${data.title}`);
     return this.tasksRepo.save(task);
@@ -24,8 +24,8 @@ export class TasksService {
 
   async findAll(user: User) {
     // Owner: all tasks in org, Admin: all in org, Viewer: only own
-    let where: any = { organization: { id: user.organizationId } };
-    if (user.role === 'viewer') {
+    let where: any = { organization: { id: user.organization.id } }; // FIXED
+    if (user.role.name === 'Viewer') {
       where.owner = { id: user.id };
     }
     return this.tasksRepo.find({
@@ -55,8 +55,8 @@ export class TasksService {
 
   private canEditOrDelete(task: Task, user: User) {
     // Owner/Admin: can edit/delete any in org, Viewer: only own
-    if (user.role === 'owner' || user.role === 'admin') {
-      return task.organization.id === user.organizationId;
+    if (user.role.name === 'Owner' || user.role.name === 'Admin') {
+      return task.organization.id === user.organization.id;
     }
     return task.owner.id === user.id;
   }

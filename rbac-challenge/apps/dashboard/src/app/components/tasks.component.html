@@ -1,0 +1,47 @@
+<div class="p-4">
+  <h2 class="text-xl font-bold mb-4">Task Board</h2>
+
+  <div class="mb-4 flex gap-2">
+    <input [(ngModel)]="newTaskTitle" class="border p-2 flex-1" placeholder="New task" />
+    <button (click)="addTask()" class="bg-green-500 text-white px-4 py-2 rounded">Add</button>
+  </div>
+
+  <div class="grid grid-cols-3 gap-4">
+    <div *ngFor="let list of ['Todo', 'In Progress', 'Done']" class="bg-gray-100 p-4 rounded shadow">
+      <h3 class="text-lg font-semibold mb-3 flex justify-between items-center">
+        {{ list }}
+        <span class="text-sm text-gray-600">({{ (list === 'Todo' ? todo : list === 'In Progress' ? inProgress : done).length }})</span>
+      </h3>
+
+      <div
+        cdkDropList
+        [cdkDropListData]="list === 'Todo' ? todo : list === 'In Progress' ? inProgress : done"
+        class="min-h-[200px] space-y-3"
+        (cdkDropListDropped)="drop($event, list)"
+      >
+        <div
+          *ngFor="let task of (list === 'Todo' ? todo : list === 'In Progress' ? inProgress : done)"
+          cdkDrag
+          class="p-3 rounded border shadow bg-white flex justify-between items-start group"
+        >
+          <div class="w-full">
+            <div *ngIf="!editMode[task.id]" (dblclick)="enableEdit(task)">
+              <p class="font-semibold text-sm">{{ task.title }}</p>
+              <span class="text-xs text-gray-500" *ngIf="task.category">#{{ task.category }}</span>
+            </div>
+
+            <div *ngIf="editMode[task.id]" class="flex items-center gap-2">
+              <input [(ngModel)]="editedTitle[task.id]" class="border p-1 text-sm flex-1" />
+              <button class="text-xs text-green-600" (click)="saveEdit(task)">Save</button>
+              <button class="text-xs text-gray-400" (click)="editMode[task.id] = false">Cancel</button>
+            </div>
+          </div>
+
+          <button (click)="deleteTask(task)" class="opacity-0 group-hover:opacity-100 text-red-500 text-sm ml-2">
+            ✕
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

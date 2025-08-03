@@ -1,0 +1,12 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "Build rbac-challenge after auth lib changes",
+			"command": "npx nx build auth && npx nx build api",
+			"group": "build",
+			"isBackground": false
+		}
+	]
+}
