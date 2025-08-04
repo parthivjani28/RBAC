@@ -164,7 +164,6 @@ _A full ERD will be added here. See code for entity details._
 - `GET /users` – List users (admin only)
 - `POST /roles` – Create role (admin only)
 
-### Sample Requests & Responses
 
 #### Register
 **Request:**
