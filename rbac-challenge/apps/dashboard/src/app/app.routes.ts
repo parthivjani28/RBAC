@@ -1,10 +1,18 @@
-import { Route } from '@angular/router';
-import { LoginComponent } from './components/login.component';
-import { TasksComponent } from './components/tasks.component';
+// src/app/app.routes.ts
+import { Routes } from '@angular/router';
 
-export const appRoutes: Route[] = [
-  { path: 'login', component: LoginComponent },
-  { path: 'tasks', component: TasksComponent },
-  { path: '', redirectTo: 'tasks', pathMatch: 'full' },
-  { path: '**', redirectTo: 'login' }
+import { LoginComponent } from './login/login.component';
+import { DragComponent } from './drag/drag.component';
+import { DashboardAdminComponent } from './dashboard-admin/dashboard-admin.component';
+import { DashboardViewerComponent } from './dashboard-viewer/dashboard-viewer.component';
+
+
+const routes: Routes = [
+  { path: '', component: LoginComponent },
+  { path: 'dashboard-owner', component: DragComponent },
+  { path: 'dashboard-admin', component: DashboardAdminComponent },
+  { path: 'dashboard-viewer', component: DashboardViewerComponent },
 ];
+
+export default routes;
+

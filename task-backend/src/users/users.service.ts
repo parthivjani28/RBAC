@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from './user.entity';
+import { User } from './users.entity';
 import * as bcrypt from 'bcrypt';
 import { Organization } from '../organizations/organization.entity';
 import { Repository } from 'typeorm';
@@ -14,7 +14,18 @@ export class UsersService {
   ) {}
 
   async findByEmail(email: string): Promise<User | undefined> {
-    return this.usersRepo.findOne({ where: { email } });
+    return this.usersRepo.findOne({
+      where: { email },
+      relations: ['organization'],
+    });
+  }
+
+  async findById(id: number): Promise<User | undefined> {
+    return this.usersRepo.findOne({
+      where: { id },
+      
+      relations: ['organization', 'role', 'role.permissions'],
+    });
   }
 
   async createUser(

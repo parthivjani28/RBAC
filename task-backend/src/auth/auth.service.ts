@@ -2,7 +2,7 @@ import { Injectable, BadRequestException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from '../users/users.service';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from '../users/user.entity';
+import { User } from '../users/users.entity';
 import { Organization } from '../organizations/organization.entity';
 import { Repository } from 'typeorm';
 import { RegisterUserDto } from './dto/register-user.dto';
@@ -22,12 +22,15 @@ export class AuthService {
   async register(dto: RegisterUserDto) {
     const { email, password, organizationId, role } = dto;
 
-    const existingUser = await this.userRepo.findOne({ where: { email } });
+    const existingUser = await this.userRepo.findOne({
+      where: { email },
+      relations: ['organization'],
+    });
     if (existingUser) {
       throw new BadRequestException('User already exists');
     }
 
-    const org = await this.orgRepo.findOne({ where: { id: organizationId } });
+    const org = await this.orgRepo.findOne({ where: { id: organizationId } }); // No need to load relations here
     if (!org) {
       throw new BadRequestException('Organization not found');
     }

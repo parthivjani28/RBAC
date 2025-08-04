@@ -1,0 +1,18 @@
+.light-mode-input {
+  border: 0.5px solid #d1d5db !important;
+}
+.light-mode-card {
+  border: 0.5px solid #d1d5db !important;
+}
+.bg-dark-100 { background: #ffff; }
+.bg-dark { background: #101827; }
+.text-2xl { font-size: 1.5rem; }
+.font-bold { font-weight: bold; }
+.text-lg { font-size: 1.125rem; }
+.font-semibold { font-weight: 600; }
+.p-4 { padding: 1rem; }
+.mb-4 { margin-bottom: 1rem; }
+.rounded { border-radius: 0.5rem; }
+.shadow { box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1); }
+.text-gray-500 { color: #6b7280; }
+h3{color: #000;}

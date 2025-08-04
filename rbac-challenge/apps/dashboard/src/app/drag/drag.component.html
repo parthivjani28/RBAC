@@ -1,0 +1,86 @@
+
+
+<app-navbar></app-navbar>
+<app-welcome
+  [userName]="userName"
+  [totalTasks]="totalTasks"
+  [pendingTasks]="pendingTasks"
+></app-welcome>
+
+
+<button (click)="toggleDarkMode()" class="fixed bottom-4 right-4 z-50 w-12 h-12 flex items-center justify-center rounded-full shadow-lg transition-colors duration-300"
+  [ngClass]="{ 'bg-gray-800 text-yellow-400': isDarkMode, 'bg-yellow-300 text-gray-800': !isDarkMode }"
+  style="outline: none; border: none;">
+  <ng-container *ngIf="isDarkMode">
+    <!-- Moon SVG -->
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="32" height="32">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />
+    </svg>
+  </ng-container>
+  <ng-container *ngIf="!isDarkMode">
+    <!-- Sun SVG -->
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="32" height="32">
+      <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2" fill="currentColor" />
+      <path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+    </svg>
+  </ng-container>
+</button>
+<div class="flex flex-col md:flex-row min-h-screen items-stretch" [ngClass]="{ 'bg-black text-white': isDarkMode, 'bg-white text-black': !isDarkMode }">
+  <!-- Left: Drag Component (50%) -->
+  <div class="w-full md:w-1/2 p-4 bg-dark-100 flex flex-col justify-center space-y-4">
+    <!-- Add Task -->
+    <div class="flex flex-col sm:flex-row gap-2">
+      <input [(ngModel)]="newTask" placeholder="New task..." class="p-2 rounded border border-gray-300 flex-1" />
+      <select [(ngModel)]="assignee" class="p-2 rounded border border-gray-300 flex-1">
+        <option value="" disabled selected>Assign to...</option>
+        <option *ngFor="let user of users" [value]="user.username">{{ user.username }} ({{ user.role }})</option>
+      </select>
+      <button (click)="addTask()" class="add-btn px-4 py-2 rounded">Add</button>
+    </div>
+    <!-- Columns -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <!-- Loop for each status -->
+      <ng-container *ngFor="let list of [
+        { title: 'To Do', data: todo, id: 'todoList' },
+        { title: 'In Progress', data: inProgress, id: 'inProgressList' },
+        { title: 'Done', data: done, id: 'doneList' }
+      ]">
+        <div class="bg-white rounded p-4 shadow">
+          <h2 class="text-lg font-semibold mb-2">{{ list.title }}</h2>
+          <div
+            cdkDropList
+            [id]="list.id"
+            [cdkDropListData]="list.data"
+            [cdkDropListConnectedTo]="getConnectedDropLists(list.id)"
+            (cdkDropListDropped)="drop($event)"
+            class="min-h-[150px] bg-gray-50 p-2 rounded"
+          >
+            <div *ngFor="let task of list.data; let i = index" cdkDrag class="p-2 mb-2 bg-white rounded shadow flex justify-between items-center gap-2">
+              <ng-container *ngIf="!task.isEditing; else editMode">
+                <span class="task-title">{{ task.text }}</span>
+                <span *ngIf="task.assignee" class="ml-2 text-xs text-gray-500">→ {{ task.assignee }}</span>
+                <div class="space-x-2">
+                  <button (click)="editTask(task)" class="text-blue-600 hover:underline text-sm">Edit</button>
+                  <button (click)="deleteTask(list.data, i)" class="text-red-600 hover:underline text-sm">Delete</button>
+                </div>
+              </ng-container>
+              <ng-template #editMode>
+                <input [(ngModel)]="task.text" class="p-1 border border-gray-300 rounded flex-1" />
+                <div class="space-x-2">
+                  <button (click)="saveTask(task)" class="text-green-600 hover:underline text-sm">Save</button>
+                  <button (click)="cancelEdit(task)" class="text-gray-600 hover:underline text-sm">Cancel</button>
+                </div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <!-- Right: Create User (50%) -->
+  <div class="w-full md:w-1/2 p-4 flex flex-col justify-center items-center bg-dark">
+    <div class="w-full">
+      <app-create-user></app-create-user>
+    </div>
+  </div>
+

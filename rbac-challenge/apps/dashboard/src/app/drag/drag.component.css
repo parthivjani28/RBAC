@@ -1,0 +1,13 @@
+.light-mode-input {
+  border: 0.5px solid #d1d5db !important;
+}
+.light-mode-card {
+  border: 0.5px solid #d1d5db !important;
+}
+:host {
+  display: block;
+}
+
+h2 ,input, .task-title{
+    color: rgb(0, 0, 0);
+}
