@@ -259,7 +259,7 @@ Authorization: Bearer <viewerToken>
 ### Postman Screenshots
 
 <details>
-<summary>Click to expand Postman screenshots</summary>
+
 
 ![Login](Postman/1.png)
 ![Register](Postman/2.png)
