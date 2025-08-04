@@ -190,34 +190,11 @@ _A full ERD will be added here. See code for entity details._
 
 ## Testing & Results
 
-Automated e2e tests are provided for authentication and RBAC task operations. Example test cases:
-
-**Auth e2e:**
-- Register user
-- Login with correct/wrong credentials
+**Front End Test:**
+![FRONTEND TEST](TEST/Front-end-test.png)
 
 **Tasks RBAC e2e:**
-- Owner can create and update tasks
-- Viewer cannot update owner tasks (403)
-
-**Sample Jest e2e Output:**
-```
-PASS  test/auth.e2e-spec.ts
-  AuthController (e2e)
-    ✓ /auth/login (POST) - fail with wrong credentials (xx ms)
-    ✓ /auth/login (POST) - success (xx ms)
-
-PASS  test/tasks.e2e-spec.ts
-  Tasks RBAC (e2e)
-    ✓ Owner can create a task (xx ms)
-    ✓ Viewer cannot update owner task (xx ms)
-    ✓ Owner can update own task (xx ms)
-
-Test Suites: 2 passed, 2 total
-Tests:       5 passed, 5 total
-```
-
----
+![BACKEND TEST](TEST/Back-end-test.png)
 
 ## Features
 
