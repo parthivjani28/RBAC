@@ -258,7 +258,6 @@ Authorization: Bearer <viewerToken>
 
 ### Postman Screenshots
 
-<details>
 
 
 ![Login](Postman/1.png)
@@ -272,7 +271,7 @@ Authorization: Bearer <viewerToken>
 ![Other](Postman/9.png)
 ![Other2](Postman/10.png)
 
-</details>
+
 
 ---
 
