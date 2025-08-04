@@ -6,5 +6,5 @@ export class Permission {
   id: number;
 
   @Column({ unique: true })
-  name: string; // e.g. 'task:create', 'task:edit', 'audit:view'
+  name: string;
 }

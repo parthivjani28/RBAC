@@ -13,7 +13,6 @@ export class PermissionsController {
     @InjectRepository(Permission) private permsRepo: Repository<Permission>,
   ) {}
 
-  // Assign a permission to a role
   @Post('assign')
   async assignPermissionToRole(
     @Body() body: { roleName: string; permissionName: string }
@@ -22,7 +21,6 @@ export class PermissionsController {
     if (!role) throw new NotFoundException('Role not found');
     const perm = await this.permsRepo.findOne({ where: { name: body.permissionName } });
     if (!perm) throw new NotFoundException('Permission not found');
-    // Avoid duplicates
     if (role.permissions.some(p => p.id === perm.id)) {
       throw new BadRequestException('Permission already assigned to role');
     }
@@ -31,7 +29,6 @@ export class PermissionsController {
     return { message: `Permission '${perm.name}' assigned to role '${role.name}'` };
   }
 
-  // Remove a permission from a role
   @Post('remove')
   async removePermissionFromRole(
     @Body() body: { roleName: string; permissionName: string }
@@ -45,13 +42,11 @@ export class PermissionsController {
     return { message: `Permission '${perm.name}' removed from role '${role.name}'` };
   }
 
-  // List all permissions
   @Get()
   async getAllPermissions() {
     return this.permsRepo.find();
   }
 
-  // List all permissions for a role
   @Get('role/:roleName')
   async getPermissionsForRole(@Param('roleName') roleName: string) {
     const role = await this.rolesRepo.findOne({ where: { name: roleName }, relations: ['permissions'] });
@@ -59,7 +54,6 @@ export class PermissionsController {
     return role.permissions;
   }
 
-  // Example: Protect an endpoint with a permission
   @UseGuards(PermissionsGuard)
   @Permissions('permission:manage')
   @Get('protected')
@@ -67,8 +61,6 @@ export class PermissionsController {
     return { message: 'You have permission:manage!' };
   }
 }
-// This function is not needed as a standalone function since removePermissionFromRole is already implemented as a controller method above.
-// If you want a standalone service-like function, you can implement it as follows:
 
 async function removePermissionFromRole(
     rolesRepo: Repository<Role>,

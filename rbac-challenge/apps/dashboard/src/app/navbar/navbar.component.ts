@@ -9,12 +9,11 @@ import { DatePipe } from '@angular/common';
   providers: [DatePipe]
 })
 export class NavbarComponent {
-  userName = 'John Doe'; // Replace with actual user logic
+  userName = 'John Doe';
   get currentTime() {
     return new Date();
   }
   clockOut() {
-    // Add your clock out logic here
     alert('Clocked out!');
   }
 }

@@ -1,5 +1,4 @@
-import { PERMISSIONS_KEY, Permissions } from './permissions.decorator';
-
+import { Permissions, PERMISSIONS_KEY } from './permissions.decorator';
 
 describe('Permissions Decorator', () => {
   it('should set metadata with permissions', () => {

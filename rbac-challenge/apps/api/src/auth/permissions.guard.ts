@@ -20,5 +20,3 @@ export class PermissionsGuard implements CanActivate {
     );
   }
 }
-
-// Controller usage example should be placed in your controller file, not here.

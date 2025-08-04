@@ -18,7 +18,6 @@ export class PermissionsGuard implements CanActivate {
     if (!user || !user.role || !user.role.permissions) {
       throw new ForbiddenException('No permissions found for user');
     }
-    // user.role.permissions is an array of Permission entities
     const userPerms = user.role.permissions.map((p: any) => p.name);
     const hasAll = requiredPermissions.every((perm) => userPerms.includes(perm));
     if (!hasAll) {

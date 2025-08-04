@@ -13,8 +13,9 @@ export class RolesGuard implements CanActivate {
     ]);
     if (!requiredRoles) return true;
     const { user } = context.switchToHttp().getRequest();
-    // Normalize user role and required roles to lowercase
+    console.log('RolesGuard: user:', user);
     const userRole = user.role?.name?.toLowerCase?.() || user.role?.toLowerCase?.() || '';
+    console.log('RolesGuard: userRole:', userRole, 'requiredRoles:', requiredRoles);
     return requiredRoles.map(r => r.toLowerCase()).some(role => hasRole(userRole, role));
   }
 }

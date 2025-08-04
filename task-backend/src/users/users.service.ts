@@ -4,7 +4,7 @@ import { User } from './users.entity';
 import * as bcrypt from 'bcrypt';
 import { Organization } from '../organizations/organization.entity';
 import { Repository } from 'typeorm';
-import { Role } from '../roles/role.entity'; // Make sure this import path is correct
+import { Role } from '../roles/role.entity';
 
 @Injectable()
 export class UsersService {

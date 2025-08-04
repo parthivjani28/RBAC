@@ -30,12 +30,10 @@ export class AuthService {
       throw new BadRequestException('User already exists');
     }
 
-    const org = await this.orgRepo.findOne({ where: { id: organizationId } }); // No need to load relations here
     if (!org) {
       throw new BadRequestException('Organization not found');
     }
 
-    // Fetch the Role entity from the database
     const roleRepo = this.userRepo.manager.getRepository('Role');
     const roleEntity = await roleRepo.findOne({ where: { name: role } });
     if (!roleEntity) {
@@ -47,7 +45,6 @@ export class AuthService {
     const user = this.userRepo.create({
       email,
       password: hashedPassword,
-      role: roleEntity, // <-- this is correct
       organization: org,
     });
 

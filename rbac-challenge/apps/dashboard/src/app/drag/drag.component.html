@@ -12,13 +12,13 @@
   [ngClass]="{ 'bg-gray-800 text-yellow-400': isDarkMode, 'bg-yellow-300 text-gray-800': !isDarkMode }"
   style="outline: none; border: none;">
   <ng-container *ngIf="isDarkMode">
-    <!-- Moon SVG -->
+    
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="32" height="32">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />
     </svg>
   </ng-container>
   <ng-container *ngIf="!isDarkMode">
-    <!-- Sun SVG -->
+ 
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="32" height="32">
       <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2" fill="currentColor" />
       <path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
@@ -26,9 +26,9 @@
   </ng-container>
 </button>
 <div class="flex flex-col md:flex-row min-h-screen items-stretch" [ngClass]="{ 'bg-black text-white': isDarkMode, 'bg-white text-black': !isDarkMode }">
-  <!-- Left: Drag Component (50%) -->
+ 
   <div class="w-full md:w-1/2 p-4 bg-dark-100 flex flex-col justify-center space-y-4">
-    <!-- Add Task -->
+ 
     <div class="flex flex-col sm:flex-row gap-2">
       <input [(ngModel)]="newTask" placeholder="New task..." class="p-2 rounded border border-gray-300 flex-1" />
       <select [(ngModel)]="assignee" class="p-2 rounded border border-gray-300 flex-1">
@@ -37,9 +37,8 @@
       </select>
       <button (click)="addTask()" class="add-btn px-4 py-2 rounded">Add</button>
     </div>
-    <!-- Columns -->
+    
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-      <!-- Loop for each status -->
       <ng-container *ngFor="let list of [
         { title: 'To Do', data: todo, id: 'todoList' },
         { title: 'In Progress', data: inProgress, id: 'inProgressList' },
@@ -77,7 +76,6 @@
       </ng-container>
     </div>
   </div>
-  <!-- Right: Create User (50%) -->
   <div class="w-full md:w-1/2 p-4 flex flex-col justify-center items-center bg-dark">
     <div class="w-full">
       <app-create-user></app-create-user>

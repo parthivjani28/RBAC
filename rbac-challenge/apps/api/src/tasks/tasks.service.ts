@@ -2,7 +2,7 @@ import { Injectable, ForbiddenException, NotFoundException } from '@nestjs/commo
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Task } from './task.entity';
-import { User } from '../users/user.entity';
+import { User } from '../users/users.entity';
 import { AuditLogService } from '../audit-log/audit-log.service';
 
 @Injectable()
@@ -12,7 +12,6 @@ export class TasksService {
     private auditLogService: AuditLogService,
   ) {}
 
-  /**
    * The user object passed to this method MUST have 'organization' and 'role' relations loaded.
    * If you get an error here, ensure your Auth Guard or decorator fetches the user with these relations.
    */
@@ -23,7 +22,6 @@ export class TasksService {
     if (!user.role || !user.role.name) {
       throw new ForbiddenException('User role not loaded. Ensure user is loaded with role relation.');
     }
-    // Normalize role name to lowercase
     const userRole = user.role.name.toLowerCase();
     const task = this.tasksRepo.create({
       ...data,
@@ -35,7 +33,6 @@ export class TasksService {
   }
 
   async findAll(user: User) {
-    // Owner: all tasks in org, Admin: all in org, Viewer: only own
     const userRole = user.role.name.toLowerCase();
     let where: any = { organization: { id: user.organization.id } };
     if (userRole === 'viewer') {
@@ -67,7 +64,6 @@ export class TasksService {
   }
 
   private canEditOrDelete(task: Task, user: User) {
-    // Owner/Admin: can edit/delete any in org, Viewer: only own
     const userRole = user.role.name.toLowerCase();
     if (userRole === 'owner' || userRole === 'admin') {
       return task.organization.id === user.organization.id;

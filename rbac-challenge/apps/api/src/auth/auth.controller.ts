@@ -21,7 +21,6 @@ export class AuthController {
     return this.authService.login(user);
   }
 
-  // Add other endpoints as needed
 }
 
 

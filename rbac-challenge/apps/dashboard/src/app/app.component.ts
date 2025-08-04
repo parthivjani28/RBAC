@@ -10,5 +10,5 @@ import { RouterModule } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  public title = 'task-drag-dashboard';
+  public title = 'task-dashboard';
 }

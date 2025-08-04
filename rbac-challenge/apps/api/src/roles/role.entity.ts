@@ -7,7 +7,7 @@ export class Role {
   id: number;
 
   @Column({ unique: true })
-  name: string; // 'owner', 'admin', 'viewer' (always lowercase)
+  name: string;
 
   @ManyToMany(() => Permission, { eager: true })
   @JoinTable()
