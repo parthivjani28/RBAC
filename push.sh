@@ -1,3 +1,3 @@
 git add .
-git commit -m "Update files"
+git commit -m "Updated files"
 git push origin master
