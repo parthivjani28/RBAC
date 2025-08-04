@@ -1,53 +1,41 @@
 
 
-# Task Management System – RBAC Challenge
-
 
 
 ## Table of Contents
-- [Setup Instructions](#setup-instructions)
-- [.env Setup](#env-setup)
-- [Architecture Overview](#architecture-overview)
-- [Data Model Explanation](#data-model-explanation)
-- [Access Control Implementation](#access-control-implementation)
-- [API Docs](#api-docs)
-- [Testing & Results](#testing--results)
-- [Features](#features)
-- [Future Considerations](#future-considerations)
-
----
+[Setup Instructions](#setup-instructions)
+[.env Setup](#env-setup)
+[Architecture Overview](#architecture-overview)
+[Data Model Explanation](#data-model-explanation)
+[Access Control Implementation](#access-control-implementation)
+[API Docs](#api-docs)
+[Testing & Results](#testing--results)
+[Features](#features)
+[Future Considerations](#future-considerations)
 
 
 
 ## Setup Instructions
 
-### 1. Nx Monorepo (`rbac-challenge`)
-```sh
+### 1. Nx Monorepo (rbac-challenge)
 cd rbac-challenge
 npm install
 npx nx run-many --target=build --all
 npx nx serve api
-```
 
-### 2. Backend (`task-backend`)
-```sh
+### 2. Backend (task-backend)
 cd task-backend
 npm install
-cp .env.example .env # Edit secrets and DB config as needed
+cp .env.example .env
 npm run start:dev
-# (Optional) npm run seed
-```
+npm run seed
 
-### 3. Frontend (`task-dashboard`)
-```sh
+### 3. Frontend (task-dashboard)
 cd task-dashboard
 npm install
-cp .env.example .env # If required for API base URL
+cp .env.example .env
 ng serve
-# Access at http://localhost:4200
-```
 
----
 
 ## .env Setup
 
@@ -229,3 +217,4 @@ The system uses a relational schema for RBAC and task management. Key entities:
 - **Testing & CI/CD**: More unit/e2e tests, automated pipelines
 
 ---
+# RBAC
