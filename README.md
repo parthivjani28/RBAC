@@ -191,10 +191,10 @@ _A full ERD will be added here. See code for entity details._
 ## Testing & Results
 
 **Front End Test:**
-![FRONTEND TEST](TEST/Front-end-test.png)
+![FRONTEND TEST](Test/Front-end-test.png)
 
 **Tasks RBAC e2e:**
-![BACKEND TEST](TEST/Back-end-test.png)
+![BACKEND TEST](Test/Back-end-test.png)
 
 ## Features
 
