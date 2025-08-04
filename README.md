@@ -130,8 +130,8 @@ The system uses a relational schema for RBAC and task management. Key entities:
 - **Organization**: id, name, parentId (for hierarchy)
 
 **ERD / Diagram:**
-![ERD](docs/erd-placeholder.png)
-_A full ERD will be added here. See code for entity details._
+![ERD](ERD/ERD.png)
+
 
 ---
 
@@ -204,12 +204,13 @@ _A full ERD will be added here. See code for entity details._
 - Task CRUD (backend)
 - Angular dashboard (frontend, dummy data)
 - Nx monorepo structure for future scalability
+- Use Nx monorepo for full-stack integration 
+- UI enhancements (drag-and-drop, dark mode)
+- Advanced state management (NgRx)
 
 ### Pending / In Progress
 - Connect frontend to backend API
 - Use Nx monorepo for full-stack integration
-- UI enhancements (drag-and-drop, dark mode)
-- Advanced state management (NgRx)
 - Audit logging, rate limiting, 2FA
 - Comprehensive tests and CI/CD
 
@@ -225,12 +226,6 @@ _A full ERD will be added here. See code for entity details._
 - **Production Security**: JWT refresh tokens, CSRF protection, RBAC caching
 - **Efficient Permission Checks**: Caching, query optimization for large orgs
 - **Scalability**: PostgreSQL, Redis, microservices
-- **UI/UX**: Drag-and-drop, dark mode, responsive design
 - **Testing & CI/CD**: More unit/e2e tests, automated pipelines
 
 ---
-
-
-# Notes
-- For detailed API docs, see Swagger at `/api/docs` (if enabled).
-- For questions or issues, please open a GitHub issue.
