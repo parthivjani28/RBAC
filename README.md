@@ -162,8 +162,7 @@ _A full ERD will be added here. See code for entity details._
 - `POST /tasks` – Create task
 - `PUT /tasks/:id` – Update task
 - `GET /users` – List users (admin only)
-- `POST /roles` – Create role (admin only)
-
+- `GET /audit-log` – Create role (admin only)
 
 
 ### Postman Screenshots
