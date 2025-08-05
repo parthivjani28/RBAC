@@ -1,7 +1,3 @@
-
-
-
-
 ## Table of Contents
 [Setup Instructions](#setup-instructions)
 [.env Setup](#env-setup)
@@ -215,6 +211,22 @@ The system uses a relational schema for RBAC and task management. Key entities:
 - **Efficient Permission Checks**: Caching, query optimization for large orgs
 - **Scalability**: PostgreSQL, Redis, microservices
 - **Testing & CI/CD**: More unit/e2e tests, automated pipelines
+
+---
+
+## Viewing Dashboards for Different Roles
+
+To experience the dashboard as different roles, use the following test accounts to log in:
+
+| Role   | Username | Password   |
+|--------|----------|------------|
+| Owner  | owner    | ownerpass  |
+| Admin  | admin    | adminpass  |
+| Viewer | viewer   | viewerpass |
+
+Open the dashboard in your browser.
+Log in using one of the accounts above.
+The dashboard will display features and access according to the selected user's role.
 
 ---
 # RBAC
