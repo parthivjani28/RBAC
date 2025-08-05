@@ -32,6 +32,20 @@ npm install
 cp .env.example .env
 ng serve
 
+## Viewing Dashboards for Different Roles
+
+To experience the dashboard as different roles, use the following test accounts to log in:
+
+| Role   | Username | Password   |
+|--------|----------|------------|
+| Owner  | owner    | ownerpass  |
+| Admin  | admin    | adminpass  |
+| Viewer | viewer   | viewerpass |
+
+Open the dashboard in your browser.
+Log in using one of the accounts above.
+The dashboard will display features and access according to the selected user's role.
+
 
 ## .env Setup
 
@@ -214,19 +228,3 @@ The system uses a relational schema for RBAC and task management. Key entities:
 
 ---
 
-## Viewing Dashboards for Different Roles
-
-To experience the dashboard as different roles, use the following test accounts to log in:
-
-| Role   | Username | Password   |
-|--------|----------|------------|
-| Owner  | owner    | ownerpass  |
-| Admin  | admin    | adminpass  |
-| Viewer | viewer   | viewerpass |
-
-Open the dashboard in your browser.
-Log in using one of the accounts above.
-The dashboard will display features and access according to the selected user's role.
-
----
-# RBAC
