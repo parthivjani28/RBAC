@@ -1,0 +1,16 @@
+<div class="create-user-container">
+  <h2>Create New User</h2>
+  <form (ngSubmit)="createUser()">
+    <label>Username:</label>
+    <input [(ngModel)]="username" name="username" required />
+    <label>Password:</label>
+    <input [(ngModel)]="password" name="password" type="password" required />
+    <label>Role:</label>
+    <select [(ngModel)]="role" name="role">
+      <option value="admin">Admin</option>
+      <option value="viewer">Viewer</option>
+    </select>
+    <button type="submit" class="add-btn px-4 py-2 rounded">Create User</button>
+  </form>
+  <div class="message" *ngIf="message">{{ message }}</div>
+</div>

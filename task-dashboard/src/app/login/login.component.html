@@ -1,0 +1,25 @@
+<div class="flex items-center justify-center h-screen army-bg">
+  <div class=" p-8 rounded shadow-md w-full max-w-sm">
+    <img src="https://cdn.prod.website-files.com/67d10bb31affb246feaa800f/67fd9dfe27af109276f357ee_turbovets-logo.svg" alt="Turbovets Logo" class="mb-6 mx-auto" />
+    <input
+      type="text"
+      [(ngModel)]="username"
+      placeholder="Username"
+      class="w-full mb-4 p-2 border border-gray-300 rounded"
+    />
+    <input
+      type="password"
+      [(ngModel)]="password"
+      placeholder="Password"
+      class="w-full mb-4 p-2 border border-gray-300 rounded"
+    />
+    <button
+      (click)="login()"
+      class="w-full login-btn py-2 rounded"
+    >
+      Login
+    </button>
+    <div class="error" *ngIf="error">{{ error }}</div>
+  </div>
+  
+</div>

@@ -1,0 +1,11 @@
+<div class="create-user-container">
+  <h2>Create New Viewer</h2>
+  <form (ngSubmit)="createViewer()">
+    <label>Username:</label>
+    <input [(ngModel)]="username" name="username" required />
+    <label>Password:</label>
+    <input [(ngModel)]="password" name="password" type="password" required />
+    <button type="submit" class="add-btn px-4 py-2 rounded">Create Viewer</button>
+  </form>
+  <div class="message" *ngIf="message">{{ message }}</div>
+</div>

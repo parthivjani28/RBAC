@@ -1,0 +1,20 @@
+.welcome-container {
+  background: #000000;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+}
+.username {
+  color: #d52949;
+  font-weight: 600;
+}
+.stats {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  font-size: 1.1rem;
+}
+.stats strong {
+  color: #d52949;
+}
